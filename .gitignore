@@ -1,0 +1,6 @@
+# Claude Code workspace (memory, session data, local settings)
+.claude/
+
+# OS / editor cruft
+.DS_Store
+*.swp
