@@ -886,8 +886,10 @@ const state = {
 // spirit of "Higher State of Consciousness" (broken kick, backbeat snare,
 // 16th ghost hats split across both machines).
 function seedDemo() {
-  state.bpm = 128;
+  state.bpm = 134;
   state.swing = 0.24;   // shuffle the off-16ths
+  state.d909.volume = 1.3;   // drum machines at max LEVEL
+  state.d808.volume = 1.3;
 
   // ---- 909: the main break — syncopated kick + backbeat snare + 8th hats ----
   const k = state.d909.rows;   // 0 BD,1 SD,2 CP,3 LT,7 CH,8 OH
@@ -914,12 +916,12 @@ function seedDemo() {
     [7, 1, 1], [7, 1, 1], [7, 1, 0], [11, 1, 0],
   ];
   line.forEach(([note, acc, sld], i) => { s[i].on = true; s[i].note = note; s[i].accent = !!acc; s[i].slide = !!sld; });
-  // Josh Wink's researched recipe (MusicRadar/Roland): sawtooth, fairly closed
-  // cutoff, high resonance, generous envmod, and the metal-style OVERDRIVE that
-  // gives HSOC its grit. tune sits a hair flat so it beats against 303 #2.
+  // 303 #1 patch: OVERDRIVE maxed, CUT OFF at 7 o'clock (min), RESONANCE at
+  // 4 o'clock (~94%) — a dark, screaming, heavily-driven acid squelch. tune
+  // sits a hair flat so it beats against 303 #2.
   Object.assign(state.b1.params, {
-    wave: 'sawtooth', octave: 0, tune: -0.07, cutoff: 0.35, reso: 0.8,
-    envmod: 0.6, decay: 0.25, accentAmt: 0.66, drive: 0.55, delay: 0.12, reverb: 0.26, sweep: 0.4, volume: 0.9,
+    wave: 'sawtooth', octave: 0, tune: -0.07, cutoff: 0.0, reso: 0.94,
+    envmod: 0.6, decay: 0.25, accentAmt: 0.66, drive: 1.0, delay: 0.12, reverb: 0.26, sweep: 0.4, volume: 0.9,
   });
 
   // ---- 303 #2: the same line on a second 303, detuned sharp so the pair beat
